@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-public class Avaliacao {
+public class Colaborador {
 	
 
 	@Id
@@ -46,7 +46,7 @@ public class Avaliacao {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Avaliacao other = (Avaliacao) obj;
+		Colaborador other = (Colaborador) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
