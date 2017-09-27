@@ -9,184 +9,91 @@
 
 <section layout:fragment="conteudo">
 
-	<form class="form-horizontal" method="post" action="/avaliacoes" th:object="${avaliacao}">
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title aw-titulo-panel">Nova Avaliação</h5>
+			<a class="btn btn-link aw-link-panel" href="/avaliacoes/">Voltar para pesquisa</a>
+		</div>
 		
-		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
-			<span th:text="${mensagem}"></span>
-		</div>
-
-		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+		<div class="card-body">
 			
-			<ul>
-			  <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}" />
-			</ul>
+			<form method="post" action="/avaliacoes" th:object="${avaliacao}">
+				
+				<div class="row">
+					<label class="col-sm-2 col-form-label">Título</label>
+					<div class="col">
+      					<input type="text" class="form-control form-control-sm"/>
+    				</div>
+  				</div>
+  				
+				<div class="row">
+					<label class="col-sm-2 col-form-label">Data início</label>
+					<div class="col">
+      					<input type="date" class="form-control form-control-sm" placeholder="First name"/>
+    				</div>
+					<label class="col-sm-2 col-form-label">Data fim</label>
+    				<div class="col">
+      					<input type="date" class="form-control form-control-sm"/>
+    				</div>
+  				</div>
+
+				<div class="row">
+					<label class="col-sm-2 col-form-label">Descrição</label>
+					<div class="col">
+      					<textarea class="form-control form-control-sm" rows="2" cols=""></textarea>
+    				</div>
+  				</div>
+
+				<div class="row">
+					<div class="col">
+						<label>Avaliados</label>
+      					<table class="table table-bordered table-sm">
+      						<thead class="thead-inverse">
+      							<tr>
+      								<th>Nível avaliado</th>
+      								<th>Nível avaliador</th>
+      								<th>Tipo seleção</th>
+      								<th>N° Avaliadores</th>
+      								<th>Peso</th>
+      								<th></th>
+      							</tr>
+      						</thead>
+      						
+      						<tbody>
+      							<tr>
+      								<td>
+      									<select class="form-control form-control-sm">
+      										<option>Operacional</option>
+      									</select>
+      								</td>
+      								<td>
+      									<select class="form-control form-control-sm">
+      										<option>Gerência</option>
+      									</select>
+      								</td>
+      								<td>
+      									<select class="form-control form-control-sm">
+      										<option>Aleatória</option>
+      									</select>
+      								</td>
+      								<td>
+      									<input class="form-control form-control-sm" type="number" />
+      								</td>
+      								<td>
+      									<input class="form-control form-control-sm" type="number" />
+      								</td>
+      								<td>
+      									<button type="button" class="btn btn-outline-success btn-sm">Add</button>
+      									<button type="button" class="btn btn-outline-danger btn-sm">Rem</button>
+      								</td>
+      							</tr>
+      						</tbody>
+      					</table>
+    				</div>
+  				</div>
+			</form>
 		</div>
-	
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="clearfix">
-					<h1 class="panel-title aw-titulo-panel">Nova Avaliação</h1>
-					<a class="btn btn-link aw-link-panel" href="/avaliacoes/">Voltar para pesquisa</a>
-				</div>
-			</div>
-			
-			<div class="panel-body">
-				
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label">Título</label>
-					<div class="col-sm-9">
-						<input name="descricao" type="text" class="form-control" id="descricao" />
-					</div>
-				</div>
-				
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label">Data Início</label>
-					<div class="col-sm-3">
-						<input name="descricao" type="date" class="form-control" id="descricao" />
-					</div>
-
-					<label for="descricao" class="col-sm-2 control-label">Data Fim</label>
-					<div class="col-sm-3">
-						<input name="descricao" type="date" class="form-control" id="descricao" />
-					</div>
-				</div>
-
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-					<div class="col-sm-9">
-						<textarea rows="2" cols="50" class="form-control"></textarea>
-					</div>
-				</div>
-
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label">Avaliados</label>
-					<div class="col-sm-9">
-
-						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<th>Nível Avaliado</th>
-									<th>Nível Avaliador</th>
-									<th>Qtd. Avaliadores</th>
-									<th>Método Escolha</th>
-									<th></th>
-								</tr>
-							</thead>
-							
-							<tbody>
-								<tr>
-									<td>
-										<select class="form-control">
-											<option>Operacional</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Operacional</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>5</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Aleatório</option>
-										</select>
-									</td>
-									<td>
-										<button type="button" class="btn btn-success">+</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<select class="form-control"><option>Operacional</option></select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Líder</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>2</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Aleatório</option>
-										</select>
-									</td>
-									<td>
-										<button type="button" class="btn btn-success">+</button>
-									</td>
-								</tr>
-
-								<tr>
-									<td>
-										<select class="form-control"><option>Operacional</option></select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Gestor</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>1</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Aleatório</option>
-										</select>
-									</td>
-									<td>
-										<button type="button" class="btn btn-success">+</button>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<select class="form-control"><option>Operacional</option></select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Operacional</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>1</option>
-										</select>
-									</td>
-									<td>
-										<select class="form-control">
-											<option>Auto-avaliação</option>
-										</select>
-									</td>
-									<td>
-										<button type="button" class="btn btn-danger">-</button>
-									</td>
-								</tr>
-							</tbody>
-							
-						</table>
-						
-					</div>
-				</div>
-				
-				
-				
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Salvar</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	</form>
+	</div>		
 
 </section>
 
