@@ -34,7 +34,7 @@ public class AvaliacaoController {
 
 		List<Avaliacao> todasAvaliacoes = avaliacoes.findAll();
 		
-		ModelAndView mv = new ModelAndView("PesquisaTitulos");
+		ModelAndView mv = new ModelAndView("PesquisaAvaliacao");
 		mv.addObject("avaliacoes", todasAvaliacoes);
 		
 		return mv;
