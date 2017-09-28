@@ -15,32 +15,44 @@
 			<a class="btn btn-link aw-link-panel" href="/avaliacoes/">Voltar para pesquisa</a>
 		</div>
 		
+		
 		<div class="card-body">
 			
 			<form method="post" action="/avaliacoes" th:object="${avaliacao}">
 				
+				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+					<span th:text="${mensagem}"></span>
+				</div>
+		
+				<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+					
+					<ul>
+					  <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}" />
+					</ul>
+				</div>
+				
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Título</label>
 					<div class="col">
-      					<input type="text" class="form-control form-control-sm"/>
+      					<input name="titulo" type="text" class="form-control form-control-sm"/>
     				</div>
   				</div>
   				
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Data início</label>
 					<div class="col">
-      					<input type="date" class="form-control form-control-sm" placeholder="First name"/>
+      					<input name="dataInicio" type="text" class="form-control form-control-sm" />
     				</div>
 					<label class="col-sm-2 col-form-label">Data fim</label>
     				<div class="col">
-      					<input type="date" class="form-control form-control-sm"/>
+      					<input name="dataFim" type="text" class="form-control form-control-sm" />
     				</div>
   				</div>
 
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Descrição</label>
 					<div class="col">
-      					<textarea class="form-control form-control-sm" rows="2" cols=""></textarea>
+      					<textarea name="descricao" class="form-control form-control-sm" rows="2" cols=""></textarea>
     				</div>
   				</div>
 
@@ -62,25 +74,25 @@
       						<tbody>
       							<tr>
       								<td>
-      									<select class="form-control form-control-sm">
-      										<option>Operacional</option>
+      									<select name="avaliacao.detalhes[0].nivelAvaliado" class="form-control form-control-sm">
+      										<option value="OPERACIONAL">Operacional</option>
       									</select>
       								</td>
       								<td>
-      									<select class="form-control form-control-sm">
-      										<option>Gerência</option>
+      									<select name="avaliacao.detalhes[0].nivelAvaliador" class="form-control form-control-sm">
+      										<option value="GERENCIA">Gerência</option>
       									</select>
       								</td>
       								<td>
-      									<select class="form-control form-control-sm">
-      										<option>Aleatória</option>
+      									<select name="avaliacao.detalhes[0].tipoSelecao" class="form-control form-control-sm">
+      										<option value="ALEATORIA">Aleatória</option>
       									</select>
       								</td>
       								<td>
-      									<input class="form-control form-control-sm" type="number" />
+      									<input name="avaliacao.detalhes[0].quantidadeAvaliadores" class="form-control form-control-sm" type="number" />
       								</td>
       								<td>
-      									<input class="form-control form-control-sm" type="number" />
+      									<input name="avaliacao.detalhes[0].pesoAvaliador" class="form-control form-control-sm" type="number" />
       								</td>
       								<td>
       									<button type="button" class="btn btn-outline-success btn-sm">Add</button>
@@ -91,6 +103,13 @@
       					</table>
     				</div>
   				</div>
+  				
+  				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+					</div>
+				</div>
+  				
 			</form>
 		</div>
 	</div>		

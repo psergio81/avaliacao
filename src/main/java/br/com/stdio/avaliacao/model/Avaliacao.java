@@ -7,12 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Avaliacao {
@@ -24,9 +24,11 @@ public class Avaliacao {
 	
 	private String titulo;
 	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataInicio;
 
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataFim;
 	
