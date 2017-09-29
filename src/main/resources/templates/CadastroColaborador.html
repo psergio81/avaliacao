@@ -9,45 +9,60 @@
 
 <section layout:fragment="conteudo">
 
-	<form class="form-horizontal" method="post" action="/avaliacoes" th:object="${colaborador}">
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title aw-titulo-panel">Novo Colaborador</h5>
+			<a class="btn btn-link aw-link-panel" href="/colaboradores/">Voltar para pesquisa</a>
+		</div>
 		
-		<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
-			<span th:text="${mensagem}"></span>
-		</div>
+		
+		<div class="card-body">
+			
+			<form method="post" action="/colaboradores" th:object="${colaborador}">
+				
+				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+					<span th:text="${mensagem}"></span>
+				</div>
+		
+				<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+					
+					<ul>
+					  <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}" />
+					</ul>
+				</div>
+				
+				<div class="row">
+					<label class="col-sm-2 col-form-label">Nome</label>
+					<div class="col">
+      					<input name="nome" type="text" class="form-control form-control-sm"/>
+    				</div>
+  				</div>
 
-		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
-			
-			<ul>
-			  <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}" />
-			</ul>
-		</div>
-	
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<div class="clearfix">
-					<h1 class="panel-title aw-titulo-panel">Novo Colaborador</h1>
-					<a class="btn btn-link aw-link-panel" href="/colaboradores/">Voltar para pesquisa</a>
-				</div>
-			</div>
-			
-			<div class="panel-body">
-				
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-					<div class="col-sm-4">
-						<input name="descricao" type="text" class="form-control" id="descricao" />
-					</div>
-				</div>
-				
-				<div class="form-group">
+				<div class="row">
+					<label class="col-sm-2 col-form-label">Nv. Hierárquico</label>
+					<div class="col">
+      					<select name="nivelHierarquico" type="text" class="form-control form-control-sm col-sm-4" >
+      						<option value="OPERACIONAL">OPERACIONAL</option>
+      					</select>
+    				</div>
+  				</div>
+  				
+				<div class="row">
+					<label class="col-sm-2 col-form-label">E-mail</label>
+					<div class="col">
+      					<input type="email" name="email" class="form-control form-control-sm col-sm-4" />
+    				</div>
+  				</div>
+
+  				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Salvar</button>
+						<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
 					</div>
 				</div>
-			</div>
+  				
+			</form>
 		</div>
-	
-	</form>
+	</div>		
 
 </section>
 

@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 
 @Entity
 public class Colaborador {
@@ -14,9 +14,9 @@ public class Colaborador {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
-	@NotEmpty(message="O campo descrição não pode ser vazio!")
-	private String descricao;
+	private String nome;
+	private String email;
+	private NivelHierarquico nivelHierarquico;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -24,41 +24,28 @@ public class Colaborador {
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		return result;
+	public String getEmail() {
+		return email;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Colaborador other = (Colaborador) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		return true;
+	public void setEmail(String email) {
+		this.email = email;
 	}
+	public NivelHierarquico getNivelHierarquico() {
+		return nivelHierarquico;
+	}
+	public void setNivelHierarquico(NivelHierarquico nivelHierarquico) {
+		this.nivelHierarquico = nivelHierarquico;
+	}
+	
+	
+
+
 	
 	
 }

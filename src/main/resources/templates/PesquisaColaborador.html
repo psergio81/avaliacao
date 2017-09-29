@@ -9,29 +9,32 @@
 </head>
 	
 <section layout:fragment="conteudo">
-	<div class="panel panel-default">
-		<div class="panel-heading">
-			<div class="clearfix">
-				<h1 class="panel-title aw-titulo-panel">Pesquisa de Colaboradores</h1>
-				<a class="btn btn-link aw-link-panel" href="/colaboradores/novo">Novo Colaborador</a>
-			</div>
+
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title aw-titulo-panel">Pesquisa de Colaboradores</h5>
+			<a class="btn btn-link aw-link-panel" href="/colaboradores/novo">Novo Colaborador</a>
 		</div>
 		
-		<div class="panel-body">
-			<table class="table table-bordered table-striped">
-				<thead>
+		<div class="card-body">
+			<table class="table table-bordered table-sm">
+				<thead class="thead-inverse">
 					<tr>
-						<th class="text-center col-md-1">#</th>
-						<th class="text-center col-md-5">Descricao</th>
+						<th>#</th>
+						<th>Nome</th>
+						<th>E-mail</th>
+						<th>Nv. Hierárquico</th>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<tr th:each="avaliacao : ${avaliacoes}">
-						<td th:text="${avaliacao.codigo}"></td>
-						<td th:text="${avaliacao.descricao}"></td>
+					<tr th:each="colaborador : ${colaboradores}">
+						<td th:text="${colaborador.codigo}"></td>
+						<td th:text="${colaborador.nome}"></td>
+						<td th:text="${colaborador.email}"></td>
+						<td th:text="${colaborador.nivelHierarquico}"></td>
 					</tr>
-					<tr th:if="${#lists.isEmpty(avaliacoes)}">
+					<tr th:if="${#lists.isEmpty(colaboradores)}">
 						<td colspan="6">
 							Nenhum Colaborador encontrado
 						</td>

@@ -32,10 +32,10 @@ public class ColaboradorController {
 	@RequestMapping
 	public ModelAndView pesquisar(){
 
-		List<Colaborador> todasAvaliacoes = colaboradores.findAll();
+		List<Colaborador> todosColaboradores = colaboradores.findAll();
 		
 		ModelAndView mv = new ModelAndView("PesquisaColaborador");
-		mv.addObject("colaborador", todasAvaliacoes);
+		mv.addObject("colaboradores", todosColaboradores);
 		
 		return mv;
 	}

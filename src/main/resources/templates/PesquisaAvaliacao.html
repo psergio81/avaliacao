@@ -30,7 +30,9 @@
 				<tbody>
 					<tr th:each="avaliacao : ${avaliacoes}">
 						<td th:text="${avaliacao.codigo}"></td>
-						<td th:text="${avaliacao.descricao}"></td>
+						<td th:text="${avaliacao.titulo}"></td>
+						<td th:text="${avaliacao.dataInicio}"></td>
+						<td th:text="${avaliacao.dataFim}"></td>
 					</tr>
 					<tr th:if="${#lists.isEmpty(avaliacoes)}">
 						<td colspan="6">
