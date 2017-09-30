@@ -23,7 +23,7 @@ public class CriterioController {
 	@RequestMapping("/novo")
 	public ModelAndView novo(){
 		
-		ModelAndView mv = new ModelAndView("CadastroColaborador");
+		ModelAndView mv = new ModelAndView("CadastroCriterio");
 		mv.addObject("criterio", new Criterio());
 		
 		return mv;

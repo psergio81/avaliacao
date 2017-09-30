@@ -1,5 +1,9 @@
 @CHARSET "ISO-8859-1";
 
+body {
+  padding-top: 3.5rem;
+}
+
 .card{
 	margin-left: 10px;
 	margin-right: 10px;
