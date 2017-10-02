@@ -45,6 +45,8 @@ public class AvaliacaoController {
 
 		ModelAndView mv = new ModelAndView("CadastroAvaliacao");
 
+		System.out.println(avaliacao.getDetalhes());
+		
 		if (errors.hasErrors()) {
 			return mv;
 		}

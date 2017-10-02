@@ -74,31 +74,33 @@
       						<tbody>
       							<tr>
       								<td>
-      									<select name="avaliacao.detalhes[0].nivelAvaliado" class="form-control form-control-sm">
+      									<select th:field="${avaliacao.detalhes[0].nivelAvaliado}" class="form-control form-control-sm">
       										<option value="OPERACIONAL">Operacional</option>
       									</select>
       								</td>
       								<td>
-      									<select name="avaliacao.detalhes[0].nivelAvaliador" class="form-control form-control-sm">
+      									<select th:field="${avaliacao.detalhes[0].nivelAvaliador}" class="form-control form-control-sm">
       										<option value="GERENCIA">Gerência</option>
       									</select>
       								</td>
       								<td>
-      									<select name="avaliacao.detalhes[0].tipoSelecao" class="form-control form-control-sm">
+      									<select th:field="${avaliacao.detalhes[0].tipoSelecao}" class="form-control form-control-sm">
       										<option value="ALEATORIA">Aleatória</option>
       									</select>
       								</td>
       								<td>
-      									<input name="avaliacao.detalhes[0].quantidadeAvaliadores" class="form-control form-control-sm" type="number" />
+      									<input th:field="${avaliacao.detalhes[0].quantidadeAvaliadores}" value="5" class="form-control form-control-sm" type="number" />
       								</td>
       								<td>
-      									<input name="avaliacao.detalhes[0].pesoAvaliador" class="form-control form-control-sm" type="number" />
+      									<input th:field="${avaliacao.detalhes[0].pesoAvaliador}" value="3" class="form-control form-control-sm" type="number" />
       								</td>
       								<td>
       									<button type="button" class="btn btn-outline-success btn-sm">Add</button>
       									<button type="button" class="btn btn-outline-danger btn-sm">Rem</button>
       								</td>
       							</tr>
+
+      							
       						</tbody>
       					</table>
     				</div>

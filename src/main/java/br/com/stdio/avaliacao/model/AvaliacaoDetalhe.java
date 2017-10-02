@@ -14,10 +14,6 @@ public class AvaliacaoDetalhe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@ManyToOne
-    @JoinColumn(name="avaliacao_id")
-	private Avaliacao avaliacao;
-	
 	private String nivelAvaliado;
 	
 	private String nivelAvaliador;
@@ -27,6 +23,10 @@ public class AvaliacaoDetalhe {
 	private int quantidadeAvaliadores;
 
 	private int pesoAvaliador;
+
+	@ManyToOne
+	@JoinColumn(name="avaliacao_id")
+	private Avaliacao avaliacao;
 
 	public Long getCodigo() {
 		return codigo;
@@ -75,4 +75,15 @@ public class AvaliacaoDetalhe {
 	public void setPesoAvaliador(int pesoAvaliador) {
 		this.pesoAvaliador = pesoAvaliador;
 	}
+
+	@Override
+	public String toString() {
+		return "AvaliacaoDetalhe [codigo=" + codigo + ", avaliacao=" + avaliacao + ", nivelAvaliado=" + nivelAvaliado
+				+ ", nivelAvaliador=" + nivelAvaliador + ", tipoSelecao=" + tipoSelecao + ", quantidadeAvaliadores="
+				+ quantidadeAvaliadores + ", pesoAvaliador=" + pesoAvaliador + "]";
+	}
+	
+	
+	
+	
 }

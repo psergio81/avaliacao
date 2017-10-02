@@ -2,7 +2,9 @@ package br.com.stdio.avaliacao.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,8 +36,8 @@ public class Avaliacao {
 	
 	@NotEmpty(message="O campo descrição não pode ser vazio!")
 	private String descricao;
-	
-	@OneToMany(mappedBy = "avaliacao")
+
+	@OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL )
 	private List<AvaliacaoDetalhe> detalhes;
 	
 
@@ -86,9 +88,7 @@ public class Avaliacao {
 	public void setDetalhes(List<AvaliacaoDetalhe> detalhes) {
 		this.detalhes = detalhes;
 	}
-	
-	
-	
+
 	
 	
 }
