@@ -1,6 +1,8 @@
 package br.com.stdio.avaliacao.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +18,8 @@ public class Colaborador {
 	private Long codigo;
 	private String nome;
 	private String email;
+	
+	@Enumerated(EnumType.STRING)
 	private NivelHierarquico nivelHierarquico;
 	
 	public Long getCodigo() {

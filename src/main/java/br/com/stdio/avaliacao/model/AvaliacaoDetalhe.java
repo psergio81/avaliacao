@@ -1,11 +1,18 @@
 package br.com.stdio.avaliacao.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
+import br.com.stdio.avaliacao.enumerate.TipoSelecao;
 
 @Entity
 public class AvaliacaoDetalhe {
@@ -14,11 +21,14 @@ public class AvaliacaoDetalhe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	private String nivelAvaliado;
+	@Enumerated(EnumType.STRING)
+	private NivelHierarquico nivelAvaliado;
 	
-	private String nivelAvaliador;
+	@Enumerated(EnumType.STRING)
+	private NivelHierarquico nivelAvaliador;
 	
-	private String tipoSelecao;
+	@Enumerated(EnumType.STRING)
+	private TipoSelecao tipoSelecao;
 	
 	private int quantidadeAvaliadores;
 
@@ -36,27 +46,27 @@ public class AvaliacaoDetalhe {
 		this.codigo = codigo;
 	}
 
-	public String getNivelAvaliado() {
+	public NivelHierarquico getNivelAvaliado() {
 		return nivelAvaliado;
 	}
 
-	public void setNivelAvaliado(String nivelAvaliado) {
+	public void setNivelAvaliado(NivelHierarquico nivelAvaliado) {
 		this.nivelAvaliado = nivelAvaliado;
 	}
 
-	public String getNivelAvaliador() {
+	public NivelHierarquico getNivelAvaliador() {
 		return nivelAvaliador;
 	}
 
-	public void setNivelAvaliador(String nivelAvaliador) {
+	public void setNivelAvaliador(NivelHierarquico nivelAvaliador) {
 		this.nivelAvaliador = nivelAvaliador;
 	}
 
-	public String getTipoSelecao() {
+	public TipoSelecao getTipoSelecao() {
 		return tipoSelecao;
 	}
 
-	public void setTipoSelecao(String tipoSelecao) {
+	public void setTipoSelecao(TipoSelecao tipoSelecao) {
 		this.tipoSelecao = tipoSelecao;
 	}
 
@@ -78,9 +88,17 @@ public class AvaliacaoDetalhe {
 
 	@Override
 	public String toString() {
-		return "AvaliacaoDetalhe [codigo=" + codigo + ", avaliacao=" + avaliacao + ", nivelAvaliado=" + nivelAvaliado
+		return "AvaliacaoDetalhe [codigo=" + codigo + ", avaliacao=" + getAvaliacao() + ", nivelAvaliado=" + nivelAvaliado
 				+ ", nivelAvaliador=" + nivelAvaliador + ", tipoSelecao=" + tipoSelecao + ", quantidadeAvaliadores="
 				+ quantidadeAvaliadores + ", pesoAvaliador=" + pesoAvaliador + "]";
+	}
+
+	public Avaliacao getAvaliacao() {
+		return avaliacao;
+	}
+
+	public void setAvaliacao(Avaliacao avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 	
 	

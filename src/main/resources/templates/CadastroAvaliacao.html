@@ -41,11 +41,15 @@
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Data início</label>
 					<div class="col">
-      					<input name="dataInicio" type="text" class="form-control form-control-sm" />
+      					<input name="dataInicio" type="text" class="form-control form-control-sm" 
+      						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
+      						data-date-today-highlight="true" data-date-autoclose="true"  />
     				</div>
 					<label class="col-sm-2 col-form-label">Data fim</label>
     				<div class="col">
-      					<input name="dataFim" type="text" class="form-control form-control-sm" />
+      					<input name="dataFim" type="text" class="form-control form-control-sm" 
+      						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
+      						data-date-today-highlight="true" data-date-autoclose="true"  />
     				</div>
   				</div>
 
@@ -75,24 +79,26 @@
       							<tr>
       								<td>
       									<select th:field="${avaliacao.detalhes[0].nivelAvaliado}" class="form-control form-control-sm">
-      										<option value="OPERACIONAL">Operacional</option>
+      										<option value="">Selecione...</option>
+      										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
       									</select>
       								</td>
       								<td>
       									<select th:field="${avaliacao.detalhes[0].nivelAvaliador}" class="form-control form-control-sm">
-      										<option value="GERENCIA">Gerência</option>
+      										<option value="">Selecione...</option>
+      										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
       									</select>
       								</td>
       								<td>
       									<select th:field="${avaliacao.detalhes[0].tipoSelecao}" class="form-control form-control-sm">
-      										<option value="ALEATORIA">Aleatória</option>
+      										<option th:each="tipoSelecao : ${tiposSelecoes}" th:value="${tipoSelecao}" th:text="${tipoSelecao.descricao}" />
       									</select>
       								</td>
       								<td>
-      									<input th:field="${avaliacao.detalhes[0].quantidadeAvaliadores}" value="5" class="form-control form-control-sm" type="number" />
+      									<input type="number" th:field="${avaliacao.detalhes[0].quantidadeAvaliadores}" value="5" class="form-control form-control-sm"  />
       								</td>
       								<td>
-      									<input th:field="${avaliacao.detalhes[0].pesoAvaliador}" value="3" class="form-control form-control-sm" type="number" />
+      									<input type="number" th:field="${avaliacao.detalhes[0].pesoAvaliador}" value="3" class="form-control form-control-sm" />
       								</td>
       								<td>
       									<button type="button" class="btn btn-outline-success btn-sm">Add</button>
