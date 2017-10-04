@@ -19,17 +19,17 @@
 			<table class="table table-bordered table-sm">
 				<thead class="thead-inverse">
 					<tr>
-						<th class="text-center col-md-1">#</th>
-						<th class="text-center col-md-5">Descricao</th>
+						<th>#</th>
+						<th>Descricao</th>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<tr th:each="avaliacao : ${avaliacoes}">
-						<td th:text="${avaliacao.codigo}"></td>
-						<td th:text="${avaliacao.descricao}"></td>
+					<tr th:each="criterio : ${criterios}">
+						<td th:text="${criterio.codigo}"></td>
+						<td th:text="${criterio.descricao}"></td>
 					</tr>
-					<tr th:if="${#lists.isEmpty(avaliacoes)}">
+					<tr th:if="${#lists.isEmpty(criterios)}">
 						<td colspan="6">
 							Nenhum Critério encontrado
 						</td>

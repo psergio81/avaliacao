@@ -1,15 +1,19 @@
 package br.com.stdio.avaliacao.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.stdio.avaliacao.enumerate.TipoCriterio;
+import br.com.stdio.avaliacao.enumerate.TipoResposta;
 import br.com.stdio.avaliacao.model.Criterio;
 import br.com.stdio.avaliacao.repository.Criterios;
 
@@ -32,10 +36,10 @@ public class CriterioController {
 	@RequestMapping
 	public ModelAndView pesquisar(){
 
-		List<Criterio> todasAvaliacoes = criterios.findAll();
+		List<Criterio> todosCriterios = criterios.findAll();
 		
 		ModelAndView mv = new ModelAndView("PesquisaCriterio");
-		mv.addObject("criterio", todasAvaliacoes);
+		mv.addObject("criterios", todosCriterios);
 		
 		return mv;
 	}
@@ -56,5 +60,17 @@ public class CriterioController {
 		
 		return mv;
 	}
+	
+	
+	@ModelAttribute("tiposCriterios")
+	public List<TipoCriterio> tiposCriterios(){
+		return Arrays.asList(TipoCriterio.values());
+	}
+	
+	@ModelAttribute("tiposRespostas")
+	public List<TipoResposta> tiposRespostas(){
+		return Arrays.asList(TipoResposta.values());
+	}
+	
 	
 }

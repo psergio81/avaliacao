@@ -14,6 +14,7 @@ public class Criterio {
 	private Long codigo;
 	
 	private String descricao;
+	private Double peso;
 
 	
 	public Long getCodigo() {
@@ -40,7 +41,6 @@ public class Criterio {
 		this.peso = peso;
 	}
 
-	private Double peso;
 	
 		
 }

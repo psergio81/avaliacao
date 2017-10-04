@@ -18,7 +18,7 @@
 		
 		<div class="card-body">
 			
-			<form method="post" action="/avaliacoes" th:object="${criterio}">
+			<form method="post" action="/criterios" th:object="${criterio}">
 				
 				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 					<span th:text="${mensagem}"></span>
@@ -34,7 +34,7 @@
 				<div class="row">
 					<label class="col-sm-3 col-form-label">Título</label>
 					<div class="col">
-      					<input name="titulo" type="text" class="form-control form-control-sm"/>
+      					<input name="descricao" type="text" class="form-control form-control-sm"/>
     				</div>
   				</div>
 
@@ -42,7 +42,7 @@
 					<label class="col-sm-3 col-form-label">Tipo de Critério</label>
 					<div class="col">
 						<select class="form-control form-control-sm col-sm-4 ">
-							
+							<option th:each="criterio : ${tiposCriterios}" th:value="${criterio}" th:text="${criterio.descricao}" />
 						</select>
     				</div>
   				</div>
@@ -51,7 +51,7 @@
 					<label class="col-sm-3 col-form-label">Tipo de Resposta</label>
 					<div class="col">
 						<select class="form-control form-control-sm col-sm-4 ">
-							
+							<option th:each="tipoResposta : ${tiposRespostas}" th:value="${tipoResposta}" th:text="${tipoResposta.descricao}" />
 						</select>
     				</div>
   				</div>
