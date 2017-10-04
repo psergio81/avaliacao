@@ -42,7 +42,8 @@
 					<label class="col-sm-2 col-form-label">Nv. Hierárquico</label>
 					<div class="col">
       					<select name="nivelHierarquico" class="form-control form-control-sm col-sm-4" >
-      						<option value="OPERACIONAL">OPERACIONAL</option>
+      						<option value="">Selecione...</option>
+							<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
       					</select>
     				</div>
   				</div>

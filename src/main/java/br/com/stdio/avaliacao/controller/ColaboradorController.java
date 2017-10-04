@@ -1,15 +1,18 @@
 package br.com.stdio.avaliacao.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 import br.com.stdio.avaliacao.model.Colaborador;
 import br.com.stdio.avaliacao.repository.Colaboradores;
 
@@ -55,6 +58,11 @@ public class ColaboradorController {
 		mv.addObject("mensagem", "Colaborador salvo com sucesso!");
 		
 		return mv;
+	}
+	
+	@ModelAttribute("niveisHierarquicos")
+	public List<NivelHierarquico> niveisHierarquicos(){
+		return Arrays.asList(NivelHierarquico.values());
 	}
 	
 }
