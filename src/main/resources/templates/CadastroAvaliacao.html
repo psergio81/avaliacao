@@ -78,19 +78,19 @@
       						<tbody>
       							<tr>
       								<td>
-      									<select th:field="${avaliacao.detalhes[0].nivelAvaliado}" class="form-control form-control-sm">
+      									<select th:field="${avaliacao.detalhes[0].nivelAvaliado}" class="custom-select form-control form-control-sm">
       										<option value="">Selecione...</option>
       										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
       									</select>
       								</td>
       								<td>
-      									<select th:field="${avaliacao.detalhes[0].nivelAvaliador}" class="form-control form-control-sm">
+      									<select th:field="${avaliacao.detalhes[0].nivelAvaliador}" class="custom-select form-control form-control-sm">
       										<option value="">Selecione...</option>
       										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
       									</select>
       								</td>
       								<td>
-      									<select th:field="${avaliacao.detalhes[0].tipoSelecao}" class="form-control form-control-sm">
+      									<select th:field="${avaliacao.detalhes[0].tipoSelecao}" class="custom-select form-control form-control-sm">
       										<option th:each="tipoSelecao : ${tiposSelecoes}" th:value="${tipoSelecao}" th:text="${tipoSelecao.descricao}" />
       									</select>
       								</td>

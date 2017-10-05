@@ -48,7 +48,11 @@
                   	Questão 1
                   </td>
                   <td>
-                  	<input class="rating" data-max="5" data-min="1" id="some_id" name="your_awesome_parameter" type="number" />
+					<label class="custom-control custom-radio" th:each="indice : ${new String[]{'1', '2', '3','4','5'}}" >
+					  <input id="radio1" name="radio" type="radio" class="custom-control-input" />
+					  <span class="custom-control-indicator"></span>
+					  <span class="custom-control-description" th:text="${indice}" >0</span>
+					</label>
                   </td>
                 </tr>
               </tbody>
