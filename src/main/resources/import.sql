@@ -1,3 +1,5 @@
+insert into avaliacao (data_inicio, data_fim, descricao, titulo) values ('2016-01-01', '2016-01-31', 'Avaliação do Desenvolvimento', 'Avaliação 1° Sem/2016');
+insert into avaliacao (data_inicio, data_fim, descricao, titulo) values ('2015-01-01', '2015-01-31', 'Avaliação do Desenvolvimento', 'Avaliação 1° Sem/2015');
 insert into avaliacao (data_inicio, data_fim, descricao, titulo) values ('2014-01-01', '2014-01-31', 'Avaliação do Desenvolvimento', 'Avaliação 1° Sem/2014');
 
 insert into avaliacao_detalhe(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'OPERACIONAL', 2, 3, 'ALEATORIA', 1)

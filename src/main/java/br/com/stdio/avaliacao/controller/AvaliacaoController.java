@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,19 +17,20 @@ import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 import br.com.stdio.avaliacao.enumerate.TipoSelecao;
 import br.com.stdio.avaliacao.model.Avaliacao;
 import br.com.stdio.avaliacao.model.AvaliacaoDetalhe;
-import br.com.stdio.avaliacao.repository.Avaliacoes;
+import br.com.stdio.avaliacao.service.AvaliacaoService;
 
 @Controller
 @RequestMapping("/avaliacoes")
 public class AvaliacaoController {
 
+	private static final String AVALIACAO_VIEW = "CadastroAvaliacao";
 	@Autowired
-	private Avaliacoes avaliacoes;
+	private AvaliacaoService avaliacaoService;
 	
 	@RequestMapping("/nova")
 	public ModelAndView novo(){
 		
-		ModelAndView mv = new ModelAndView("CadastroAvaliacao");
+		ModelAndView mv = new ModelAndView(AVALIACAO_VIEW);
 		mv.addObject("avaliacao", new Avaliacao());
 		
 		return mv;
@@ -37,7 +39,7 @@ public class AvaliacaoController {
 	@RequestMapping
 	public ModelAndView pesquisar(){
 
-		List<Avaliacao> todasAvaliacoes = avaliacoes.findAll();
+		List<Avaliacao> todasAvaliacoes = avaliacaoService.getTodasAvaliacoes();
 		
 		ModelAndView mv = new ModelAndView("PesquisaAvaliacao");
 		mv.addObject("avaliacoes", todasAvaliacoes);
@@ -48,7 +50,7 @@ public class AvaliacaoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(@Validated Avaliacao avaliacao, Errors errors){
 
-		ModelAndView mv = new ModelAndView("CadastroAvaliacao");
+		ModelAndView mv = new ModelAndView(AVALIACAO_VIEW);
 
 		List<AvaliacaoDetalhe> detalhes = avaliacao.getDetalhes();
 		for (AvaliacaoDetalhe avaliacaoDetalhe : detalhes) {
@@ -59,12 +61,34 @@ public class AvaliacaoController {
 			return mv;
 		}
 		
-		avaliacoes.save(avaliacao);
+		avaliacaoService.salvar(avaliacao);
 		
 		mv.addObject("mensagem", "Avaliação salva com sucesso!");
 		
 		return mv;
 	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable Long codigo){
+	
+		ModelAndView mv = new ModelAndView(AVALIACAO_VIEW);
+		
+		Avaliacao avaliacao = avaliacaoService.getAvaliacao(codigo);
+		
+		mv.addObject("avaliacao", avaliacao);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo){
+		
+		avaliacaoService.excluir(codigo);
+		
+		
+		return "redirect:/avaliacoes";
+	}
+	
 	
 	
 	@ModelAttribute("niveisHierarquicos")

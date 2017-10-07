@@ -1,5 +1,24 @@
 var avaliacao = (function(){
 	
+	$('#confirmacaoExclusaoModal').on('show.bs.modal', function(event){
+		
+		var button = $(event.relatedTarget);
+		var codigoTitulo = button.data('codigo');
+		var descricaoAvaliacao = button.data('descricao');
+		
+		var modal = $(this);
+		var form = modal.find('form');
+		var action = form.data('url-base');
+		
+		if(!action.endsWith('/')){
+			action +="/";
+		}
+		
+		form.attr('action', action + codigoTitulo);
+		modal.find('.modal-body span').html('Tem certeza que deseja excluir a Avaliação:<br/><strong>'+descricaoAvaliacao+'</strong>?');
+		
+	});
+	
 	
 	$('#containerAvaliadores').on('click', 'button.add', function(){
 		
@@ -23,13 +42,22 @@ var avaliacao = (function(){
 		
 	});
 	
+	var botaoAdicionaLinha = $('<button>', {
+		type : 'button',
+		text : 'Add'
+	}).addClass('btn btn-outline-success btn-sm add');
 	
 	var validaVisualizacaoIcones = function($linhaClicada){
 		
 		var $tbody = $linhaClicada.closest('tbody');
-		var $primeiraLinha = $tbody.find('tr:first');
+		var linhas = $tbody.find('tr');
+		var quantidadeLinhas = linhas.length;
+
+		if(quantidadeLinhas == 2){
+			$tbody.find('tr:first').find('td:last').append(botaoAdicionaLinha.clone());
+		}
 		
-		$primeiraLinha.find('td:last').find('.rem').addClass('disabled');
+		
 		
 	};
 	

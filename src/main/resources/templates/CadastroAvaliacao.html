@@ -12,13 +12,15 @@
 	<div class="card">
 		<div class="card-header">
 			<h5 class="card-title aw-titulo-panel">Nova Avaliação</h5>
-			<a class="btn btn-link aw-link-panel" href="/avaliacoes/">Voltar para pesquisa</a>
+			<a class="btn btn-link aw-link-panel" href="/avaliacoes">Voltar para pesquisa</a>
 		</div>
 		
 		
 		<div class="card-body">
 			
 			<form method="post" action="/avaliacoes" th:object="${avaliacao}">
+				
+				<input type="hidden" th:field="*{codigo}" />
 				
 				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 					<span th:text="${mensagem}"></span>
@@ -34,20 +36,20 @@
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Título</label>
 					<div class="col">
-      					<input name="titulo" type="text" class="form-control form-control-sm"/>
+      					<input th:field="*{titulo}" type="text" class="form-control form-control-sm"/>
     				</div>
   				</div>
   				
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Data início</label>
 					<div class="col">
-      					<input name="dataInicio" type="text" class="form-control form-control-sm" 
+      					<input th:field="*{dataInicio}" type="text" class="form-control form-control-sm" 
       						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
       						data-date-today-highlight="true" data-date-autoclose="true"  />
     				</div>
 					<label class="col-sm-2 col-form-label">Data fim</label>
     				<div class="col">
-      					<input name="dataFim" type="text" class="form-control form-control-sm" 
+      					<input th:field="*{dataFim}" type="text" class="form-control form-control-sm" 
       						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
       						data-date-today-highlight="true" data-date-autoclose="true"  />
     				</div>
@@ -56,7 +58,7 @@
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Descrição</label>
 					<div class="col">
-      					<textarea name="descricao" class="form-control form-control-sm" rows="2" cols=""></textarea>
+      					<textarea th:field="*{descricao}" class="form-control form-control-sm" rows="2" cols=""></textarea>
     				</div>
   				</div>
 
@@ -78,6 +80,8 @@
       						<tbody>
       							<tr>
       								<td>
+      									<input type="hidden" th:field="${avaliacao.detalhes[0].codigo}" />
+      									
       									<select th:field="${avaliacao.detalhes[0].nivelAvaliado}" class="custom-select form-control form-control-sm">
       										<option value="">Selecione...</option>
       										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
