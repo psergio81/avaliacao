@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -59,6 +60,28 @@ public class ColaboradorController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable Long codigo){
+	
+		ModelAndView mv = new ModelAndView("CadastroColaborador");
+		
+		Colaborador colaborador = colaboradores.getOne(codigo);
+		
+		mv.addObject("colaborador", colaborador);
+		
+		return mv;
+	}
+	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo){
+		
+		colaboradores.delete(codigo);
+		
+		
+		return "redirect:/colaboradores";
+	}
+	
 	
 	@ModelAttribute("niveisHierarquicos")
 	public List<NivelHierarquico> niveisHierarquicos(){

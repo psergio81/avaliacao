@@ -5,17 +5,18 @@ var avaliacao = (function(){
 		var button = $(event.relatedTarget);
 		var codigoTitulo = button.data('codigo');
 		var descricaoAvaliacao = button.data('descricao');
+		var textoEntidade = button.data('texto-entidade');
+		var action = button.data('url-base');
 		
 		var modal = $(this);
 		var form = modal.find('form');
-		var action = form.data('url-base');
 		
 		if(!action.endsWith('/')){
 			action +="/";
 		}
 		
 		form.attr('action', action + codigoTitulo);
-		modal.find('.modal-body span').html('Tem certeza que deseja excluir a Avaliação:<br/><strong>'+descricaoAvaliacao+'</strong>?');
+		modal.find('.modal-body span').html('Tem certeza que deseja excluir '+textoEntidade+':<br/><strong>'+descricaoAvaliacao+'</strong>?');
 		
 	});
 	

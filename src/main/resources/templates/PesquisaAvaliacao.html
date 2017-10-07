@@ -38,7 +38,10 @@
 							<a th:href="@{avaliacoes/{codigo}(codigo=${avaliacao.codigo})}">editar</a>
 							
 							<a data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-								th:attr="data-codigo=${avaliacao.codigo}, data-descricao=${avaliacao.titulo}" 
+								th:attr="data-codigo=${avaliacao.codigo}, 
+								data-descricao=${avaliacao.titulo},
+								data-texto-entidade='a Avaliação',
+								data-url-base='/avaliacoes'" 
 							>excluir</a>
 						</td>
 					</tr>

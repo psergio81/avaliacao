@@ -24,6 +24,7 @@
 						<th>Nome</th>
 						<th>E-mail</th>
 						<th>Nv. Hierárquico</th>
+						<th></th>
 					</tr>
 				</thead>
 				
@@ -33,6 +34,16 @@
 						<td th:text="${colaborador.nome}"></td>
 						<td th:text="${colaborador.email}"></td>
 						<td th:text="${colaborador.nivelHierarquico.descricao}"></td>
+						<td>
+							<a th:href="@{colaboradores/{codigo}(codigo=${colaborador.codigo})}">editar</a>
+							
+							<a data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${colaborador.codigo}, 
+								data-descricao=${colaborador.nome},
+								data-texto-entidade='o Colaborador',
+								data-url-base='/colaboradores'" 
+							>excluir</a>
+						</td>
 					</tr>
 					<tr th:if="${#lists.isEmpty(colaboradores)}">
 						<td colspan="6">
@@ -42,6 +53,9 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div layout:include="DialogoConfirmacaoExclusao"></div>
+		
 	</div>
 	
 </section>

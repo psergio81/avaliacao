@@ -12,13 +12,15 @@
 	<div class="card">
 		<div class="card-header">
 			<h5 class="card-title aw-titulo-panel">Novo Colaborador</h5>
-			<a class="btn btn-link aw-link-panel" href="/colaboradores/">Voltar para pesquisa</a>
+			<a class="btn btn-link aw-link-panel" href="/colaboradores">Voltar para pesquisa</a>
 		</div>
 		
 		
 		<div class="card-body">
 			
 			<form method="post" action="/colaboradores" th:object="${colaborador}">
+				
+				<input type="hidden" th:field="*{codigo}" ></input>
 				
 				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 					<span th:text="${mensagem}"></span>
@@ -34,14 +36,14 @@
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Nome</label>
 					<div class="col">
-      					<input name="nome" type="text" class="form-control form-control-sm"/>
+      					<input th:field="*{nome}" type="text" class="form-control form-control-sm"/>
     				</div>
   				</div>
 
 				<div class="row">
 					<label class="col-sm-2 col-form-label">Nv. Hierárquico</label>
 					<div class="col">
-      					<select name="nivelHierarquico" class="form-control form-control-sm col-sm-4" >
+      					<select th:field="*{nivelHierarquico}" class="form-control form-control-sm col-sm-4" >
       						<option value="">Selecione...</option>
 							<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
       					</select>
@@ -51,7 +53,7 @@
 				<div class="row">
 					<label class="col-sm-2 col-form-label">E-mail</label>
 					<div class="col">
-      					<input type="email" name="email" class="form-control form-control-sm col-sm-4" />
+      					<input th:field="*{email}" type="email" class="form-control form-control-sm col-sm-4" />
     				</div>
   				</div>
 
