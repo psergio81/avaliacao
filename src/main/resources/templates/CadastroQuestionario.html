@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="LayoutPadrao">
+<head>
+	<title>Cadastro Questionário</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title aw-titulo-panel">Novo Questionário</h5>
+			<a class="btn btn-link aw-link-panel" href="/questionarios">Voltar para pesquisa</a>
+		</div>
+		
+		
+		<div class="card-body">
+			
+			<form method="post" action="/questionarios" th:object="${questionario}">
+				
+				<input type="hidden" th:field="*{codigo}"></input>
+				
+				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
+					<span th:text="${mensagem}"></span>
+				</div>
+		
+				<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+					
+					<ul>
+					  <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}" />
+					</ul>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 col-form-label">Título</label>
+					<div class="col">
+      					<input placeholder="Ex.: Questionário Técnico do Setor" th:field="*{descricao}" type="text" class="form-control form-control-sm"/>
+    				</div>
+  				</div>
+  				
+  				<div class="row">
+  					<div class="col-sm-12">
+						<div class="card mb-3">
+							<div class="card-header">
+								<button type="button" class="close btn">+</button>
+								<h6>
+									Cargos associados
+									<span class="badge badge-secondary">3</span>
+								</h6>
+							</div>
+							<div class="card-body">
+		    					<h6>
+		    						<span class="badge badge-secondary">
+		    							Analista desenvolvedor Pleno
+		    						</span>
+		    						<span class="badge badge-secondary">
+		    							Treinee DevOps
+		    						</span>
+		    						<span class="badge badge-secondary">
+		    							Analista de Qualidade
+		    						</span>
+		    					</h6>
+		  					</div>
+						</div>
+  					</div>
+				</div>
+				
+				<div class="row">
+  					<div class="col-sm-12">
+						<div class="card mb-3">
+							<div class="card-header">
+								<button type="button" class="close btn">+</button>
+								<h6>
+									Questões associadas
+									<span class="badge badge-secondary">1</span>
+								</h6>
+							</div>
+						  <ul class="list-group list-group-flush">
+						    <li class="list-group-item">Pergunda Exemplo</li>
+						  </ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+  					<div class="col-sm-12">
+		  				<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+							</div>
+						</div>
+					</div>
+				</div>  				
+  				
+			</form>
+		</div>
+	</div>
+
+</section>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Pesquisa de Questionários</title>
+</head>
+	
+<section layout:fragment="conteudo">
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title aw-titulo-panel">Pesquisa de Questionário</h5>
+			<a class="btn btn-link aw-link-panel" href="/questionarios/novo">Novo Questionário</a>
+		</div>
+		
+		<div class="card-body">
+			<table class="table table-bordered table-sm">
+				<thead class="thead-inverse">
+					<tr>
+						<th>#</th>
+						<th>Descricao</th>
+						<th></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="questionario : ${questionarios}">
+						<td th:text="${questionario.codigo}"></td>
+						<td th:text="${questionario.descricao}"></td>
+						<td>
+							<a th:href="@{questionarios/{codigo}(codigo=${questionario.codigo})}">editar</a>
+							
+							<a data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${questionario.codigo}, 
+								data-descricao=${questionario.descricao},
+								data-texto-entidade='o Questionario',
+								data-url-base='/questionarios'" 
+							>excluir</a>
+						</td>
+					</tr>
+					
+					<tr th:if="${#lists.isEmpty(questionarios)}">
+						<td colspan="6">
+							Nenhum Questionário encontrado
+						</td>
+					</tr>					
+				</tbody>
+			</table>
+		</div>
+		
+		<div layout:include="DialogoConfirmacaoExclusao"></div>
+		
+	</div>
+	
+</section>
+	
+</html>
