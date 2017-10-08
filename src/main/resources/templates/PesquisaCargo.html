@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Pesquisa de Cargos</title>
+</head>
+	
+<section layout:fragment="conteudo">
+	<div class="card">
+		<div class="card-header">
+			<h5 class="card-title aw-titulo-panel">Pesquisa de Cargo</h5>
+			<a class="btn btn-link aw-link-panel" href="/cargos/novo">Novo Cargo</a>
+		</div>
+		
+		<div class="card-body">
+			<table class="table table-bordered table-sm">
+				<thead class="thead-inverse">
+					<tr>
+						<th>#</th>
+						<th>Descricao</th>
+						<th></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr th:each="cargo : ${cargos}">
+						<td th:text="${cargo.codigo}"></td>
+						<td th:text="${cargo.descricao}"></td>
+						<td>
+							<a th:href="@{cargos/{codigo}(codigo=${cargo.codigo})}">editar</a>
+							
+							<a data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${cargo.codigo}, 
+								data-descricao=${cargo.descricao},
+								data-texto-entidade='o Cargo',
+								data-url-base='/cargos'" 
+							>excluir</a>
+						</td>
+					</tr>
+					
+					<tr th:if="${#lists.isEmpty(cargos)}">
+						<td colspan="6">
+							Nenhum Cargo encontrado
+						</td>
+					</tr>					
+				</tbody>
+			</table>
+		</div>
+		
+		<div layout:include="DialogoConfirmacaoExclusao"></div>
+		
+	</div>
+	
+</section>
+	
+</html>
