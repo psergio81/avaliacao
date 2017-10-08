@@ -7,11 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.com.stdio.avaliacao.enumerate.TipoCriterio;
+import br.com.stdio.avaliacao.enumerate.TipoQuestao;
 
 @Entity
-public class Criterio {
-	
+public class Questao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +18,7 @@ public class Criterio {
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
-	private TipoCriterio tipoCriterio;
+	private TipoQuestao tipoQuestao;
 
 	
 	public Long getCodigo() {
@@ -38,12 +37,12 @@ public class Criterio {
 		this.descricao = descricao;
 	}
 
-	public TipoCriterio getTipoCriterio() {
-		return tipoCriterio;
+	public TipoQuestao getTipoQuestao() {
+		return tipoQuestao;
 	}
 
-	public void setTipoCriterio(TipoCriterio tipoCriterio) {
-		this.tipoCriterio = tipoCriterio;
+	public void setTipoQuestao(TipoQuestao tipoQuestao) {
+		this.tipoQuestao = tipoQuestao;
 	}
 
 	

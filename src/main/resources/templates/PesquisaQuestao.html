@@ -5,14 +5,14 @@
 		layout:decorator="LayoutPadrao">
 
 <head>
-	<title>Pesquisa de Critérios</title>
+	<title>Pesquisa de Questões</title>
 </head>
 	
 <section layout:fragment="conteudo">
 	<div class="card">
 		<div class="card-header">
-			<h5 class="card-title aw-titulo-panel">Pesquisa de Critério</h5>
-			<a class="btn btn-link aw-link-panel" href="/criterios/novo">Novo Critério</a>
+			<h5 class="card-title aw-titulo-panel">Pesquisa de Questões</h5>
+			<a class="btn btn-link aw-link-panel" href="/questoes/nova">Nova Questão</a>
 		</div>
 		
 		<div class="card-body">
@@ -20,32 +20,32 @@
 				<thead class="thead-inverse">
 					<tr>
 						<th>#</th>
-						<th>Descricao</th>
-						<th>Tipo de Critério</th>
+						<th>Descrição</th>
+						<th>Tipo de Questão</th>
 						<th></th>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<tr th:each="criterio : ${criterios}">
-						<td th:text="${criterio.codigo}"></td>
-						<td th:text="${criterio.descricao}"></td>
-						<td th:text="${criterio.tipoCriterio.descricao}"></td>
+					<tr th:each="questao : ${questoes}">
+						<td th:text="${questao.codigo}"></td>
+						<td th:text="${questao.descricao}"></td>
+						<td th:text="${questao.tipoQuestao.descricao}"></td>
 						<td>
-							<a th:href="@{criterios/{codigo}(codigo=${criterio.codigo})}">editar</a>
+							<a th:href="@{questoes/{codigo}(codigo=${questao.codigo})}">editar</a>
 							
 							<a data-toggle="modal" data-target="#confirmacaoExclusaoModal"
-								th:attr="data-codigo=${criterio.codigo}, 
-								data-descricao=${criterio.descricao},
-								data-texto-entidade='o Critério',
-								data-url-base='/criterios'" 
+								th:attr="data-codigo=${questao.codigo}, 
+								data-descricao=${questao.descricao},
+								data-texto-entidade='a Questão',
+								data-url-base='/questoes'" 
 							>excluir</a>
 						</td>
 					</tr>
 					
-					<tr th:if="${#lists.isEmpty(criterios)}">
+					<tr th:if="${#lists.isEmpty(questoes)}">
 						<td colspan="6">
-							Nenhum Critério encontrado
+							Nenhum Questão encontrada
 						</td>
 					</tr>					
 				</tbody>

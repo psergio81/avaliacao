@@ -4,21 +4,21 @@
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 		layout:decorator="LayoutPadrao">
 <head>
-	<title>Cadastro Critério</title>
+	<title>Cadastro Questão</title>
 </head>
 
 <section layout:fragment="conteudo">
 
 	<div class="card">
 		<div class="card-header">
-			<h5 class="card-title aw-titulo-panel">Novo Critério</h5>
-			<a class="btn btn-link aw-link-panel" href="/criterios">Voltar para pesquisa</a>
+			<h5 class="card-title aw-titulo-panel">Nova Questão</h5>
+			<a class="btn btn-link aw-link-panel" href="/questoes">Voltar para pesquisa</a>
 		</div>
 		
 		
 		<div class="card-body">
 			
-			<form method="post" action="/criterios" th:object="${criterio}">
+			<form method="post" action="/questoes" th:object="${questao}">
 				
 				<input type="hidden" th:field="*{codigo}"></input>
 				
@@ -33,18 +33,18 @@
 					</ul>
 				</div>
 				
-				<div class="row">
+				<div class="form-group">
 					<label class="col-sm-3 col-form-label">Título</label>
 					<div class="col">
       					<input th:field="*{descricao}" type="text" class="form-control form-control-sm"/>
     				</div>
   				</div>
 
-				<div class="row">
-					<label class="col-sm-3 col-form-label">Tipo de Critério</label>
+				<div class="form-group">
+					<label class="col-sm-3 col-form-label">Tipo de Questão</label>
 					<div class="col">
-						<select th:field="*{tipoCriterio}" class="form-control form-control-sm col-sm-4 ">
-							<option th:each="criterio : ${tiposCriterios}" th:value="${criterio}" th:text="${criterio.descricao}" />
+						<select th:field="*{tipoQuestao}" class="form-control form-control-sm col-sm-4 ">
+							<option th:each="questao : ${tiposQuestoes}" th:value="${questao}" th:text="${questao.descricao}" />
 						</select>
     				</div>
   				</div>
