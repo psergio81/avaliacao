@@ -12,13 +12,15 @@
 	<div class="card">
 		<div class="card-header">
 			<h5 class="card-title aw-titulo-panel">Novo Critério</h5>
-			<a class="btn btn-link aw-link-panel" href="/criterios/">Voltar para pesquisa</a>
+			<a class="btn btn-link aw-link-panel" href="/criterios">Voltar para pesquisa</a>
 		</div>
 		
 		
 		<div class="card-body">
 			
 			<form method="post" action="/criterios" th:object="${criterio}">
+				
+				<input type="hidden" th:field="*{codigo}"></input>
 				
 				<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
 					<span th:text="${mensagem}"></span>
@@ -34,30 +36,19 @@
 				<div class="row">
 					<label class="col-sm-3 col-form-label">Título</label>
 					<div class="col">
-      					<input name="descricao" type="text" class="form-control form-control-sm"/>
+      					<input th:field="*{descricao}" type="text" class="form-control form-control-sm"/>
     				</div>
   				</div>
 
 				<div class="row">
 					<label class="col-sm-3 col-form-label">Tipo de Critério</label>
 					<div class="col">
-						<select class="form-control form-control-sm col-sm-4 ">
+						<select th:field="*{tipoCriterio}" class="form-control form-control-sm col-sm-4 ">
 							<option th:each="criterio : ${tiposCriterios}" th:value="${criterio}" th:text="${criterio.descricao}" />
 						</select>
     				</div>
   				</div>
 
-				<div class="row">
-					<label class="col-sm-3 col-form-label">Tipo de Resposta</label>
-					<div class="col">
-						<select class="form-control form-control-sm col-sm-4 ">
-							<option th:each="tipoResposta : ${tiposRespostas}" th:value="${tipoResposta}" th:text="${tipoResposta.descricao}" />
-						</select>
-    				</div>
-  				</div>
-
-				
-  				
   				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="submit" class="btn btn-primary btn-sm">Salvar</button>

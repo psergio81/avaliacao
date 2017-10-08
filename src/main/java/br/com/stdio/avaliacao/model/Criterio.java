@@ -1,9 +1,13 @@
 package br.com.stdio.avaliacao.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import br.com.stdio.avaliacao.enumerate.TipoCriterio;
 
 @Entity
 public class Criterio {
@@ -12,9 +16,10 @@ public class Criterio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
 	private String descricao;
-	private Double peso;
+	
+	@Enumerated(EnumType.STRING)
+	private TipoCriterio tipoCriterio;
 
 	
 	public Long getCodigo() {
@@ -33,12 +38,12 @@ public class Criterio {
 		this.descricao = descricao;
 	}
 
-	public Double getPeso() {
-		return peso;
+	public TipoCriterio getTipoCriterio() {
+		return tipoCriterio;
 	}
 
-	public void setPeso(Double peso) {
-		this.peso = peso;
+	public void setTipoCriterio(TipoCriterio tipoCriterio) {
+		this.tipoCriterio = tipoCriterio;
 	}
 
 	

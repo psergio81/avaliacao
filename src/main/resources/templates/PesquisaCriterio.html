@@ -21,6 +21,8 @@
 					<tr>
 						<th>#</th>
 						<th>Descricao</th>
+						<th>Tipo de Critério</th>
+						<th></th>
 					</tr>
 				</thead>
 				
@@ -28,7 +30,19 @@
 					<tr th:each="criterio : ${criterios}">
 						<td th:text="${criterio.codigo}"></td>
 						<td th:text="${criterio.descricao}"></td>
+						<td th:text="${criterio.tipoCriterio.descricao}"></td>
+						<td>
+							<a th:href="@{criterios/{codigo}(codigo=${criterio.codigo})}">editar</a>
+							
+							<a data-toggle="modal" data-target="#confirmacaoExclusaoModal"
+								th:attr="data-codigo=${criterio.codigo}, 
+								data-descricao=${criterio.descricao},
+								data-texto-entidade='o Critério',
+								data-url-base='/criterios'" 
+							>excluir</a>
+						</td>
 					</tr>
+					
 					<tr th:if="${#lists.isEmpty(criterios)}">
 						<td colspan="6">
 							Nenhum Critério encontrado
@@ -37,6 +51,9 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div layout:include="DialogoConfirmacaoExclusao"></div>
+		
 	</div>
 	
 </section>
