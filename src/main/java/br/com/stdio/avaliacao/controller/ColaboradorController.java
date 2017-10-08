@@ -15,19 +15,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 import br.com.stdio.avaliacao.model.Colaborador;
-import br.com.stdio.avaliacao.repository.Colaboradores;
+import br.com.stdio.avaliacao.service.ColaboradorService;
 
 @Controller
 @RequestMapping("/colaboradores")
 public class ColaboradorController {
 
+	private static final String COLABORADOR_VIEW = "CadastroColaborador";
 	@Autowired
-	private Colaboradores colaboradores;
+	private ColaboradorService colaboradorService;
 	
 	@RequestMapping("/novo")
 	public ModelAndView novo(){
 		
-		ModelAndView mv = new ModelAndView("CadastroColaborador");
+		ModelAndView mv = new ModelAndView(COLABORADOR_VIEW);
 		mv.addObject("colaborador", new Colaborador());
 		
 		return mv;
@@ -36,7 +37,7 @@ public class ColaboradorController {
 	@RequestMapping
 	public ModelAndView pesquisar(){
 
-		List<Colaborador> todosColaboradores = colaboradores.findAll();
+		List<Colaborador> todosColaboradores = colaboradorService.getTodosColaboradores();
 		
 		ModelAndView mv = new ModelAndView("PesquisaColaborador");
 		mv.addObject("colaboradores", todosColaboradores);
@@ -47,14 +48,14 @@ public class ColaboradorController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(@Validated Colaborador colaborador, Errors errors){
 
-		ModelAndView mv = new ModelAndView("CadastroColaborador");
+		ModelAndView mv = new ModelAndView(COLABORADOR_VIEW);
 
 		if (errors.hasErrors()) {
 			return mv;
 		}
 		
 		
-		colaboradores.save(colaborador);
+		colaboradorService.salvar(colaborador);
 		
 		mv.addObject("mensagem", "Colaborador salvo com sucesso!");
 		
@@ -64,9 +65,9 @@ public class ColaboradorController {
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable Long codigo){
 	
-		ModelAndView mv = new ModelAndView("CadastroColaborador");
+		ModelAndView mv = new ModelAndView(COLABORADOR_VIEW);
 		
-		Colaborador colaborador = colaboradores.getOne(codigo);
+		Colaborador colaborador = colaboradorService.getColaborador(codigo);
 		
 		mv.addObject("colaborador", colaborador);
 		
@@ -76,7 +77,7 @@ public class ColaboradorController {
 	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo){
 		
-		colaboradores.delete(codigo);
+		colaboradorService.excluir(codigo);
 		
 		
 		return "redirect:/colaboradores";
