@@ -37,7 +37,7 @@ public class Avaliacao {
 	private String descricao;
 
 	@OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL )
-	private List<AvaliacaoDetalhe> detalhes;
+	private List<AvaliacaoAvaliador> detalhes;
 	
 
 	public Long getCodigo() {
@@ -80,11 +80,11 @@ public class Avaliacao {
 		this.descricao = descricao;
 	}
 
-	public List<AvaliacaoDetalhe> getDetalhes() {
+	public List<AvaliacaoAvaliador> getDetalhes() {
 		return detalhes;
 	}
 
-	public void setDetalhes(List<AvaliacaoDetalhe> detalhes) {
+	public void setDetalhes(List<AvaliacaoAvaliador> detalhes) {
 		this.detalhes = detalhes;
 	}
 

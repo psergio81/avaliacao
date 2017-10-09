@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 import br.com.stdio.avaliacao.enumerate.TipoSelecao;
 import br.com.stdio.avaliacao.model.Avaliacao;
-import br.com.stdio.avaliacao.model.AvaliacaoDetalhe;
+import br.com.stdio.avaliacao.model.AvaliacaoAvaliador;
 import br.com.stdio.avaliacao.service.AvaliacaoService;
 
 @Controller
@@ -52,9 +52,9 @@ public class AvaliacaoController {
 
 		ModelAndView mv = new ModelAndView(AVALIACAO_VIEW);
 
-		List<AvaliacaoDetalhe> detalhes = avaliacao.getDetalhes();
-		for (AvaliacaoDetalhe avaliacaoDetalhe : detalhes) {
-			avaliacaoDetalhe.setAvaliacao(avaliacao);
+		List<AvaliacaoAvaliador> detalhes = avaliacao.getDetalhes();
+		for (AvaliacaoAvaliador avaliacaoAvaliador : detalhes) {
+			avaliacaoAvaliador.setAvaliacao(avaliacao);
 		}
 		
 		if (errors.hasErrors()) {

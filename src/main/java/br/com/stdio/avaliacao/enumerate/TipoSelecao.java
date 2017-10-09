@@ -2,7 +2,8 @@ package br.com.stdio.avaliacao.enumerate;
 
 public enum TipoSelecao {
 	
-	ALEATORIA("Aleatória");
+	ALEATORIA("Aleatória"),
+	AUTO_AVALIACAO("Auto-Avaliação");
 	
 	private String descricao;
 

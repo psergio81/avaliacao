@@ -78,32 +78,13 @@
       						</thead>
       						
       						<tbody>
-      							<tr>
-      								<td>
-      									<input type="hidden" th:field="${avaliacao.detalhes[0].codigo}" />
-      									
-      									<select th:field="${avaliacao.detalhes[0].nivelAvaliado}" class="custom-select form-control form-control-sm">
-      										<option value="">Selecione...</option>
-      										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
-      									</select>
-      								</td>
-      								<td>
-      									<select th:field="${avaliacao.detalhes[0].nivelAvaliador}" class="custom-select form-control form-control-sm">
-      										<option value="">Selecione...</option>
-      										<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
-      									</select>
-      								</td>
-      								<td>
-      									<select th:field="${avaliacao.detalhes[0].tipoSelecao}" class="custom-select form-control form-control-sm">
-      										<option th:each="tipoSelecao : ${tiposSelecoes}" th:value="${tipoSelecao}" th:text="${tipoSelecao.descricao}" />
-      									</select>
-      								</td>
-      								<td>
-      									<input type="number" th:field="${avaliacao.detalhes[0].quantidadeAvaliadores}" value="5" class="form-control form-control-sm"  />
-      								</td>
-      								<td>
-      									<input type="number" th:field="${avaliacao.detalhes[0].pesoAvaliador}" value="3" class="form-control form-control-sm" />
-      								</td>
+      							<tr th:each="detalhe, iterStat : ${avaliacao.detalhes}">
+      								<td th:text="${detalhe.nivelAvaliado.descricao}"></td>
+      								<td th:text="${detalhe.nivelAvaliador.descricao}"></td>
+      								<td th:text="${detalhe.tipoSelecao.descricao}"></td>
+      								<td th:text="${detalhe.quantidadeAvaliadores}"></td>
+      								<td th:text="${detalhe.pesoAvaliador}"></td>
+
       								<td>
       									<button type="button" class="btn btn-outline-success btn-sm add">Add</button>
       									<button type="button" class="btn btn-outline-danger btn-sm rem">Rem</button>
