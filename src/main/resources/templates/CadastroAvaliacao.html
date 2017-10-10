@@ -61,41 +61,40 @@
       					<textarea th:field="*{descricao}" class="form-control form-control-sm" rows="2" cols=""></textarea>
     				</div>
   				</div>
-
-				<div id="containerAvaliadores" class="row">
-					<div class="col">
-						<label>Avaliados</label>
-      					<table class="table table-bordered table-sm">
-      						<thead class="thead-inverse">
-      							<tr>
-      								<th>Nível avaliado</th>
-      								<th>Nível avaliador</th>
-      								<th>Tipo seleção</th>
-      								<th>N° Avaliadores</th>
-      								<th>Peso</th>
-      								<th></th>
-      							</tr>
-      						</thead>
-      						
-      						<tbody>
-      							<tr th:each="detalhe, iterStat : ${avaliacao.detalhes}">
-      								<td th:text="${detalhe.nivelAvaliado.descricao}"></td>
-      								<td th:text="${detalhe.nivelAvaliador.descricao}"></td>
-      								<td th:text="${detalhe.tipoSelecao.descricao}"></td>
-      								<td th:text="${detalhe.quantidadeAvaliadores}"></td>
-      								<td th:text="${detalhe.pesoAvaliador}"></td>
-
-      								<td>
-      									<button type="button" class="btn btn-outline-success btn-sm add">Add</button>
-      									<button type="button" class="btn btn-outline-danger btn-sm rem">Rem</button>
-      								</td>
-      							</tr>
-
-      							
-      						</tbody>
-      					</table>
-    				</div>
-  				</div>
+  				
+  				
+  				<div  id="accordion" role="tablist" class="card mb-3">
+  					<div class="card-header col-sm-12 text-center">
+  						<h6>
+  							<a href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" >Seleção Avaliadores</a>
+  						</h6>
+  					</div>
+  					
+					<div class="card-header">
+						<button type="button" class="close btn">+</button>
+						<div class="row">
+							<h6 class="col-sm-3">Nível avaliado</h6>
+							<h6 class="col-sm-3">Nível avaliador</h6>
+							<h6 class="col-sm-3">Tipo seleção</h6>
+							<h6 class="col-sm-2">N° Avaliadores</h6>
+							<h6 class="col-sm-1">Peso</h6>
+						</div>
+					</div>
+					
+					<ul class="list-group list-group-flush" th:each="detalhe, iterStat : ${avaliacao.detalhes}">
+    					<li class="list-group-item">
+    						<button type="button" class="close btn">-</button>
+    						<div class="row">
+	    						<span class="col-sm-3" th:text="${detalhe.nivelAvaliado.descricao}"></span>
+								<span class="col-sm-3" th:text="${detalhe.nivelAvaliador.descricao}" ></span>
+								<span class="col-sm-3" th:text="${detalhe.tipoSelecao.descricao}"></span>
+								<span class="col-sm-2" th:text="${detalhe.quantidadeAvaliadores}">N° Avaliadores</span>
+								<span class="col-sm-1" th:text="${detalhe.pesoAvaliador}">Peso</span>
+    						</div>
+    					</li>
+  					</ul>
+				  
+				</div>
   				
   				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
