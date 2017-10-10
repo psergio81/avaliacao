@@ -32,35 +32,41 @@
 					  <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.message}" />
 					</ul>
 				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label class="col-sm-2 col-form-label">Título</label>
+						<div class="col">
+	      					<input th:field="*{titulo}" type="text" class="form-control form-control-sm"/>
+	    				</div>
+	  				</div>
 				
-				<div class="row">
-					<label class="col-sm-2 col-form-label">Título</label>
-					<div class="col">
-      					<input th:field="*{titulo}" type="text" class="form-control form-control-sm"/>
-    				</div>
-  				</div>
-  				
-				<div class="row">
-					<label class="col-sm-2 col-form-label">Data início</label>
-					<div class="col">
-      					<input th:field="*{dataInicio}" type="text" class="form-control form-control-sm" 
-      						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
-      						data-date-today-highlight="true" data-date-autoclose="true"  />
-    				</div>
-					<label class="col-sm-2 col-form-label">Data fim</label>
-    				<div class="col">
-      					<input th:field="*{dataFim}" type="text" class="form-control form-control-sm" 
-      						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
-      						data-date-today-highlight="true" data-date-autoclose="true"  />
-    				</div>
-  				</div>
+					<div class="form-group col-md-3">
+						<label class="col-form-label">Data início</label>
+						<div class="col">
+	      					<input th:field="*{dataInicio}" type="text" class="form-control form-control-sm" 
+	      						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
+	      						data-date-today-highlight="true" data-date-autoclose="true"  />
+	    				</div>
+	  				</div>
+	
+					<div class="form-group col-md-3">
+						<label class="col-form-label">Data fim</label>
+	    				<div class="col">
+	      					<input th:field="*{dataFim}" type="text" class="form-control form-control-sm" 
+	      						data-provide="datepicker" data-date-language="pt-BR" data-date-format="dd/mm/yyyy" 
+	      						data-date-today-highlight="true" data-date-autoclose="true"  />
+	    				</div>
+	  				</div>
 
-				<div class="row">
-					<label class="col-sm-2 col-form-label">Descrição</label>
-					<div class="col">
-      					<textarea th:field="*{descricao}" class="form-control form-control-sm" rows="2" cols=""></textarea>
-    				</div>
-  				</div>
+					<div class="form-group col-md-12">
+						<label class="col-sm-2 col-form-label">Descrição</label>
+						<div class="col">
+	      					<textarea th:field="*{descricao}" class="form-control form-control-sm" rows="2" cols=""></textarea>
+	    				</div>
+	  				</div>
+				</div>
+  				
+
   				
   				
   				<div  id="accordion" role="tablist" class="card mb-3">
