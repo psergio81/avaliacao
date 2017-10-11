@@ -15,7 +15,6 @@
 			<a class="btn btn-link aw-link-panel" href="/cargos">Voltar para pesquisa</a>
 		</div>
 		
-		
 		<div class="card-body">
 			
 			<form method="post" action="/cargos" th:object="${cargo}">
@@ -33,17 +32,29 @@
 					</ul>
 				</div>
 				
-				<div class="form-group">
-					<label class="col-sm-3 col-form-label">Título</label>
-					<div class="col">
-      					<input th:field="*{descricao}" type="text" class="form-control form-control-sm"/>
-    				</div>
-  				</div>
+				<div class="form-row">
 
-  				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+					<div class="form-group col-md-6">
+						<label class="col-sm-6 col-form-label">Título</label>
+						<div class="col">
+	      					<input th:field="*{descricao}" type="text" class="form-control form-control-sm"/>
+	    				</div>
+	  				</div>
+	
+					<div class="form-group col-md-6">
+						<label class="col-sm-6 col-form-label">Nível Hierárquico</label>
+						<select th:field="*{nivelHierarquico}" class="form-control form-control-sm col-sm-4" >
+      						<option value="">Selecione...</option>
+							<option th:each="nivelHierarquico : ${niveisHierarquicos}" th:value="${nivelHierarquico}" th:text="${nivelHierarquico.descricao}" />
+      					</select>
+	  				</div>
+	
+	  				<div class="form-group col-md-6">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+						</div>
 					</div>
+				
 				</div>
   				
 			</form>

@@ -16,14 +16,14 @@ insert into colaborador(email, nivel_hierarquico, nome) values ('liderum@avalia.
 insert into colaborador(email, nivel_hierarquico, nome) values ('liderdois@avalia.com', 'LIDERANCA', 'Lider II');
 
 
-insert into cargo (descricao) values ('Analista Programador');
-insert into cargo (descricao) values ('Analista de Operação');
-insert into cargo (descricao) values ('Analista de Qualidade');
-insert into cargo (descricao) values ('Arquiteto JAVA');
-insert into cargo (descricao) values ('DBA - Administrador de Banco de Dados');
-insert into cargo (descricao) values ('Estagiário em Programação');
-insert into cargo (descricao) values ('Estagiário em Qualidade');
-insert into cargo (descricao) values ('Gerente de Desenvolvimento');
-insert into cargo (descricao) values ('Líder de Projetos');
-insert into cargo (descricao) values ('Scrum Master');
-insert into cargo (descricao) values ('Web Designer');
+insert into cargo (descricao, nivel_hierarquico) values ('Analista Programador', 'OPERACIONAL');
+insert into cargo (descricao, nivel_hierarquico) values ('Analista de Operação', 'OPERACIONAL');
+insert into cargo (descricao, nivel_hierarquico) values ('Analista de Qualidade', 'OPERACIONAL');
+insert into cargo (descricao, nivel_hierarquico) values ('Arquiteto JAVA', 'LIDERANCA');
+insert into cargo (descricao, nivel_hierarquico) values ('DBA - Administrador de Banco de Dados', 'LIDERANCA');
+insert into cargo (descricao, nivel_hierarquico) values ('Estagiário em Programação', 'OPERACIONAL');
+insert into cargo (descricao, nivel_hierarquico) values ('Estagiário em Qualidade', 'OPERACIONAL');
+insert into cargo (descricao, nivel_hierarquico) values ('Gerente de Desenvolvimento', 'GERENCIA');
+insert into cargo (descricao, nivel_hierarquico) values ('Líder de Projetos', 'LIDERANCA');
+insert into cargo (descricao, nivel_hierarquico) values ('Scrum Master', 'LIDERANCA');
+insert into cargo (descricao, nivel_hierarquico) values ('Web Designer', 'LIDERANCA');

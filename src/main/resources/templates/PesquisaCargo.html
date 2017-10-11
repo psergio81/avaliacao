@@ -21,6 +21,7 @@
 					<tr>
 						<th>#</th>
 						<th>Descrição</th>
+						<th>Nv. Hierárquico</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -29,6 +30,7 @@
 					<tr th:each="cargo : ${cargos}">
 						<td th:text="${cargo.codigo}"></td>
 						<td th:text="${cargo.descricao}"></td>
+						<td th:text="${cargo.nivelHierarquico.descricao}"></td>
 						<td>
 							<a th:href="@{cargos/{codigo}(codigo=${cargo.codigo})}">editar</a>
 							
