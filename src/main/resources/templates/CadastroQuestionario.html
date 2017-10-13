@@ -45,19 +45,13 @@
 						<button type="button" class="close btn">+</button>
 						<h6>
 							Cargos associados
-							<span class="badge badge-secondary">3</span>
+							<span class="badge badge-secondary" th:text="${#lists.size(questionario.cargos)}"></span>
 						</h6>
 					</div>
 					<div class="card-body">
     					<h6>
-    						<span class="badge badge-secondary">
-    							Analista desenvolvedor Pleno
-    						</span>
-    						<span class="badge badge-secondary">
-    							Treinee DevOps
-    						</span>
-    						<span class="badge badge-secondary">
-    							Analista de Qualidade
+    						<span th:name="questionario.cargos" th:value="${cargo.codigo}" class="badge badge-secondary"  th:each="cargo : ${questionario.cargos}">
+    							<span th:text="${cargo.descricao}"></span>
     						</span>
     					</h6>
   					</div>
@@ -68,11 +62,11 @@
 						<button type="button" class="close btn">+</button>
 						<h6>
 							Questões associadas
-							<span class="badge badge-secondary">1</span>
+							<span class="badge badge-secondary" th:text="${#lists.size(questionario.questoes)}" >1</span>
 						</h6>
 					</div>
 				  <ul class="list-group list-group-flush">
-				    <li class="list-group-item">Pergunda Exemplo</li>
+				    <li class="list-group-item" th:name="questionario.questoes" th:value="${questao.codigo}" th:each="questao : ${questionario.questoes}" th:text="${questao.descricao}"></li>
 				  </ul>
 				</div>
 				

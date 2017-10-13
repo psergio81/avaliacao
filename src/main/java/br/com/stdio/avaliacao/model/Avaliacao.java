@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -39,6 +40,9 @@ public class Avaliacao {
 	@OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL )
 	private List<AvaliacaoAvaliador> detalhes;
 	
+	
+	@ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	private List<Questionario> questionarios;
 
 	public Long getCodigo() {
 		return codigo;
@@ -86,6 +90,14 @@ public class Avaliacao {
 
 	public void setDetalhes(List<AvaliacaoAvaliador> detalhes) {
 		this.detalhes = detalhes;
+	}
+
+	public List<Questionario> getQuestionarios() {
+		return questionarios;
+	}
+
+	public void setQuestionarios(List<Questionario> questionarios) {
+		this.questionarios = questionarios;
 	}
 
 	

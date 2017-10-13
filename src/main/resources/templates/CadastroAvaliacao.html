@@ -15,7 +15,6 @@
 			<a class="btn btn-link aw-link-panel" href="/avaliacoes">Voltar para pesquisa</a>
 		</div>
 		
-		
 		<div class="card-body">
 			
 			<form method="post" action="/avaliacoes" th:object="${avaliacao}">
@@ -72,7 +71,7 @@
   						<h6>
   							<a data-toggle="collapse" href="#listaAvaliadores" aria-expanded="true" aria-controls="listaAvaliadores">
   								Seleção Avaliadores
-  								<span class="badge badge-secondary">3</span>
+  								<span class="badge badge-secondary" th:text="${#lists.size(avaliacao.detalhes)}" >3</span>
   							</a>
   						</h6>
   					</div>
@@ -90,7 +89,7 @@
 							</div>
 						</div>
 						
-						<ul class="list-group list-group-flush" th:each="detalhe, iterStat : ${avaliacao.detalhes}">
+						<ul class="list-group list-group-flush" th:each="detalhe : ${avaliacao.detalhes}">
 	    					<li class="list-group-item">
 	    						<button type="button" class="close btn">-</button>
 	    						<div class="row">
@@ -111,7 +110,7 @@
   						<h6>
   							<a data-toggle="collapse" href="#listaQuestionarios" aria-expanded="true" aria-controls="listaQuestionarios">
   								Seleção Questionários
-  								<span class="badge badge-secondary">0</span>
+  								<span class="badge badge-secondary" th:text="${#lists.size(avaliacao.questionarios)}">0</span>
   							</a>
   						</h6>
   					</div>
@@ -126,12 +125,19 @@
 							</div>
 						</div>
 						
-						<ul class="list-group list-group-flush" th:each="detalhe, iterStat : ${avaliacao.detalhes}">
+						<ul class="list-group list-group-flush" th:each="questionario : ${avaliacao.questionarios}">
 	    					<li class="list-group-item">
 	    						<button type="button" class="close btn">-</button>
 	    						<div class="row">
-		    						<span class="col-sm-6" th:text="${detalhe.nivelAvaliado.descricao}"></span>
-									<span class="col-sm-6" th:text="${detalhe.pesoAvaliador}"></span>
+		    						<span class="col-sm-6" th:text="${questionario.descricao}"></span>
+									<span class="col-sm-6" th:text="${#lists.size(questionario.questoes)}"></span>
+									<div class="card-body">
+				    					<h6>
+				    						<span th:name="questionario.cargos" th:value="${cargo.codigo}" class="badge badge-secondary"  th:each="cargo : ${questionario.cargos}">
+				    							<span th:text="${cargo.descricao}"></span>
+				    						</span>
+				    					</h6>
+				  					</div>
 	    						</div>
 	    					</li>
 	  					</ul>

@@ -1,11 +1,15 @@
 package br.com.stdio.avaliacao.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 
@@ -20,6 +24,9 @@ public class Cargo {
 	
 	@Enumerated(EnumType.STRING)
 	private NivelHierarquico nivelHierarquico;
+	
+	@ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	private List<Questionario> questionario;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -43,6 +50,14 @@ public class Cargo {
 
 	public void setNivelHierarquico(NivelHierarquico nivelHierarquico) {
 		this.nivelHierarquico = nivelHierarquico;
+	}
+
+	public List<Questionario> getQuestionario() {
+		return questionario;
+	}
+
+	public void setQuestionario(List<Questionario> questionario) {
+		this.questionario = questionario;
 	}
 		
 }
