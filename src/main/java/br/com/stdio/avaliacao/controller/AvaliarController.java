@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/avaliar")
+
 public class AvaliarController {
 
-	
-	@RequestMapping
+	@RequestMapping("/login")
 	public ModelAndView loginAvaliar(){
 		
 		ModelAndView mv = new ModelAndView("Login");
@@ -17,6 +16,15 @@ public class AvaliarController {
 		
 		return mv;
 		
+	}
+	
+	@RequestMapping("/minhasAvaliacoes")
+	public ModelAndView minhasAvaliacoes(){
+		
+		ModelAndView mv = new ModelAndView("MinhasAvaliacoes");
+		
+		
+		return mv;
 	}
 	
 }

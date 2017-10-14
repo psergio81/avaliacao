@@ -52,7 +52,10 @@ public class QuestionarioController {
 		
 		questionarioService.salvar(questionario);
 		
+		Questionario questionarioSalvo = questionarioService.getQuestionario(questionario.getCodigo());
+		
 		mv.addObject("mensagem", "Questionario salvo com sucesso!");
+		mv.addObject("questionario", questionarioSalvo);
 		
 		return mv;
 	}

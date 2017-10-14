@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorator="LayoutPadrao">
+
+<head>
+	<title>Minhas Avaliações</title>
+</head>
+	
+<section layout:fragment="conteudo">
+
+	<div class="card">
+		<div class="card-header">
+			<h6 class="card-title aw-titulo-panel">
+				<a data-toggle="collapse" href="#listaAvaliadores" aria-expanded="true" aria-controls="listaAvaliadores">
+					Minhas Avaliações
+					<span class="badge badge-secondary">3</span>
+				</a>
+			</h6>
+		</div>
+
+		<div class="card-header">
+			<h6 class="card-title aw-titulo-panel">
+				<a data-toggle="collapse" href="#listaAvaliadores" aria-expanded="true" aria-controls="listaAvaliadores">
+					Avaliações aguardando minhas respostas
+					<span class="badge badge-secondary">1</span>
+				</a>
+			</h6>
+		</div>
+
+		<div class="card-header">
+			<h6 class="card-title aw-titulo-panel">
+				<a data-toggle="collapse" href="#listaAvaliadores" aria-expanded="true" aria-controls="listaAvaliadores">
+					Avaliações concluídas
+					<span class="badge badge-secondary">5</span>
+				</a>
+			</h6>
+		</div>
+		
+	</div>
+</section>
+</html>
