@@ -46,9 +46,14 @@ public class Colaborador {
 	public void setNivelHierarquico(NivelHierarquico nivelHierarquico) {
 		this.nivelHierarquico = nivelHierarquico;
 	}
+	@Override
+	public String toString() {
+		return "Colaborador [codigo=" + codigo + ", nome=" + nome + ", email=" + email + ", nivelHierarquico="
+				+ nivelHierarquico + "]";
+	}
 	
 	
-
+	
 
 	
 	

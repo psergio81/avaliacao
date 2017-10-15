@@ -2,19 +2,19 @@ insert into avaliacao (data_inicio, data_fim, descricao, titulo) values ('2016-0
 insert into avaliacao (data_inicio, data_fim, descricao, titulo) values ('2015-01-01', '2015-01-31', 'Avaliação do Desenvolvimento', 'Avaliação 1° Sem/2015');
 insert into avaliacao (data_inicio, data_fim, descricao, titulo) values ('2014-01-01', '2014-01-31', 'Avaliação do Desenvolvimento', 'Avaliação 1° Sem/2014');
 
-insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'OPERACIONAL', 2, 3, 'ALEATORIA', 1)
-insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'LIDERANCA', 4, 2, 'ALEATORIA', 1)
-insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'GERENCIA', 4, 1, 'ALEATORIA', 1)
-insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('GERENCIA', 'OPERACIONAL', 4, 1, 'ALEATORIA', 1)
+insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'OPERACIONAL', 1, 1, 'AUTO_AVALIACAO', 1)
+insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'OPERACIONAL', 2, 2, 'ALEATORIA', 1)
+insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'LIDERANCA', 3, 2, 'ALEATORIA', 1)
+insert into avaliacao_avaliador(nivel_avaliado, nivel_avaliador, peso_avaliador, quantidade_avaliadores, tipo_selecao, avaliacao_id) values ('OPERACIONAL', 'GERENCIA', 4, 5, 'ALEATORIA', 1)
 
 
-insert into colaborador(email, nivel_hierarquico, nome) values ('gerente@avalia.com', 'GERENCIA', 'Gerente');
-insert into colaborador(email, nivel_hierarquico, nome) values ('desenvolvedor@avalia.com', 'OPERACIONAL', 'Desenvolvedor');
-insert into colaborador(email, nivel_hierarquico, nome) values ('desenvolvedorx@avalia.com', 'OPERACIONAL', 'Desenvolvedor II');
-insert into colaborador(email, nivel_hierarquico, nome) values ('qa@avalia.com', 'OPERACIONAL', 'Qualidade');
-insert into colaborador(email, nivel_hierarquico, nome) values ('qa@avalia.com', 'OPERACIONAL', 'QA II');
-insert into colaborador(email, nivel_hierarquico, nome) values ('liderum@avalia.com', 'LIDERANCA', 'Lider I');
-insert into colaborador(email, nivel_hierarquico, nome) values ('liderdois@avalia.com', 'LIDERANCA', 'Lider II');
+insert into colaborador(email, nivel_hierarquico, nome) values ('carlos@avalia.com', 'GERENCIA', 'Carlos');
+insert into colaborador(email, nivel_hierarquico, nome) values ('henrique@avalia.com', 'OPERACIONAL', 'Henrique');
+insert into colaborador(email, nivel_hierarquico, nome) values ('otavio@avalia.com', 'OPERACIONAL', 'Otavio');
+insert into colaborador(email, nivel_hierarquico, nome) values ('gessica@avalia.com', 'OPERACIONAL', 'Gessica');
+insert into colaborador(email, nivel_hierarquico, nome) values ('paulo@avalia.com', 'OPERACIONAL', 'Paulo');
+insert into colaborador(email, nivel_hierarquico, nome) values ('kilder@avalia.com', 'LIDERANCA', 'Kilder');
+insert into colaborador(email, nivel_hierarquico, nome) values ('americo@avalia.com', 'LIDERANCA', 'Americo');
 
 
 insert into cargo (descricao, nivel_hierarquico) values ('Analista Programador', 'OPERACIONAL');

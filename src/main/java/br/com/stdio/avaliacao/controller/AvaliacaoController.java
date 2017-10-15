@@ -68,6 +68,18 @@ public class AvaliacaoController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/gerar/{codigo}")
+	public ModelAndView gerarAvaliacao(@PathVariable Long codigo){
+		
+		ModelAndView mv = new ModelAndView("redirect:/avaliacoes");
+		
+		avaliacaoService.gerarAvaliacao(codigo);
+		
+		
+		return mv;
+	}
+	
+	
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable Long codigo){
 	
