@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 
@@ -21,6 +23,10 @@ public class Colaborador {
 	
 	@Enumerated(EnumType.STRING)
 	private NivelHierarquico nivelHierarquico;
+	
+	@OneToOne
+	@JoinColumn(name="avaliacao_respostas_id")
+	private AvaliacaoResposta avaliacaoResposta;
 	
 	public Long getCodigo() {
 		return codigo;
@@ -50,6 +56,12 @@ public class Colaborador {
 	public String toString() {
 		return "Colaborador [codigo=" + codigo + ", nome=" + nome + ", email=" + email + ", nivelHierarquico="
 				+ nivelHierarquico + "]";
+	}
+	public AvaliacaoResposta getAvaliacaoResposta() {
+		return avaliacaoResposta;
+	}
+	public void setAvaliacaoResposta(AvaliacaoResposta avaliacaoResposta) {
+		this.avaliacaoResposta = avaliacaoResposta;
 	}
 	
 	

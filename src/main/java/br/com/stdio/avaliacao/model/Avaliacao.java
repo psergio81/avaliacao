@@ -40,7 +40,6 @@ public class Avaliacao {
 	@OneToMany(mappedBy = "avaliacao", cascade = CascadeType.ALL )
 	private List<AvaliacaoAvaliador> detalhes;
 	
-	
 	@ManyToMany(cascade ={CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Questionario> questionarios;
 
@@ -100,6 +99,4 @@ public class Avaliacao {
 		this.questionarios = questionarios;
 	}
 
-	
-	
 }

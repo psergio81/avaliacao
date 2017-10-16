@@ -1,5 +1,6 @@
 package br.com.stdio.avaliacao.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +12,11 @@ import br.com.stdio.avaliacao.enumerate.NivelHierarquico;
 import br.com.stdio.avaliacao.enumerate.TipoSelecao;
 import br.com.stdio.avaliacao.model.Avaliacao;
 import br.com.stdio.avaliacao.model.AvaliacaoAvaliador;
+import br.com.stdio.avaliacao.model.AvaliacaoResposta;
 import br.com.stdio.avaliacao.model.Colaborador;
+import br.com.stdio.avaliacao.model.Questao;
+import br.com.stdio.avaliacao.model.Questionario;
+import br.com.stdio.avaliacao.repository.AvaliacaoRespostas;
 import br.com.stdio.avaliacao.repository.Avaliacoes;
 
 @Service
@@ -19,6 +24,10 @@ public class AvaliacaoService {
 	
 	@Autowired
 	private Avaliacoes avaliacoes;
+
+	@Autowired
+	private AvaliacaoRespostas avaliacaoRespostas;
+	
 	@Autowired
 	private ColaboradorService colaboradorService;
 
@@ -45,6 +54,7 @@ public class AvaliacaoService {
 	public void gerarAvaliacao(Long codigo) {
 
 		Avaliacao avaliacao = avaliacoes.getOne(codigo);
+		List<Questao> questoes = getQuestoes(avaliacao);
 		
 		
 		List<AvaliacaoAvaliador> detalhes = avaliacao.getDetalhes();
@@ -56,9 +66,6 @@ public class AvaliacaoService {
 			NivelHierarquico nivelAvaliador = avaliacaoAvaliador.getNivelAvaliador();
 
 			TipoSelecao tipoSelecao = avaliacaoAvaliador.getTipoSelecao();
-
-			System.out.println(tipoSelecao.getDescricao().toUpperCase());
-			
 			List<Colaborador> colaboradoresAvaliados = colaboradorService.getColaboradorPeloNivel(nivelAvaliado);
 			
 			for (Colaborador colaborador : colaboradoresAvaliados) {
@@ -67,11 +74,31 @@ public class AvaliacaoService {
 				
 				for (Colaborador avaliador : avaliadores) {
 					System.out.println(">>>> "+avaliador.getNome()+" avalia "+colaborador.getNome());
+	
+					AvaliacaoResposta avaliacaoResposta = new AvaliacaoResposta();
+					avaliacaoResposta.setAvaliacao(avaliacao);
+					avaliacaoResposta.setColaborador(colaborador);
+					avaliacaoResposta.setAvaliador(avaliador);
+					
+					avaliacaoRespostas.save(avaliacaoResposta);
+					
 				}
 			}
 			
 		}
 		
+	}
+
+	private List<Questao> getQuestoes(Avaliacao avaliacao) {
+
+		List<Questao> retorno = new ArrayList<Questao>();
+			
+		for (Questionario questionario : avaliacao.getQuestionarios()) {
+			retorno.addAll(questionario.getQuestoes());
+		}
+		
+		
+		return retorno;
 	}
 
 	private List<Colaborador> getAvaliadores(int quantidadeAvaliadores, NivelHierarquico nivelAvaliador, Colaborador colaborador, TipoSelecao tipoSelecao) {
