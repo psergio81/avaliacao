@@ -52,5 +52,12 @@ public class AvaliacaoResposta {
 	public void setColaborador(Colaborador colaborador) {
 		this.colaborador = colaborador;
 	}
+	@Override
+	public String toString() {
+		return "AvaliacaoResposta [codigo=" + codigo + ", avaliacao=" + avaliacao + ", avaliador=" + avaliador
+				+ ", colaborador=" + colaborador + "]";
+	}
+	
+	
 	
 }

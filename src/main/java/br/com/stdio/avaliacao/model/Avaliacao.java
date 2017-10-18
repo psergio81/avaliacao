@@ -99,4 +99,13 @@ public class Avaliacao {
 		this.questionarios = questionarios;
 	}
 
+	@Override
+	public String toString() {
+		return "Avaliacao [codigo=" + codigo + ", titulo=" + titulo + ", dataInicio=" + dataInicio + ", dataFim="
+				+ dataFim + ", descricao=" + descricao + ", detalhes=" + detalhes + ", questionarios=" + questionarios
+				+ "]";
+	}
+
+	
+	
 }
